@@ -1,0 +1,269 @@
+/* ------------- GENERAL STYLES --------------------------------*/
+/* ------------------------------------------------------------*/
+	body {
+		margin-left:23%;
+		margin-right:23%;
+		padding:0;
+		border:0;	
+	/* This removes the border around the viewport in old versions of IE */
+		width:100%;
+		background-color: #36648B;
+		font-family: arial, sans-serif;		
+		font-size:80%;
+	}
+	a {
+		color:#369;
+	}
+	a:hover {
+		color:#fff;
+		background:#369;
+		text-decoration:none;
+	}
+	h1, h2, h3 {
+		margin:1.9em 1.5em .1em 0;
+		padding:0;
+		color: #000;
+	}
+	
+	.fullpage h2{
+		margin-left: 0%;;
+	}
+	p {
+		margin:.4em 0 .8em 3em;
+		padding:0;
+	}
+	img {
+		margin:10px 0 5px;
+	}
+	
+	
+	
+/* ------------- HEADER STYLES --------------------------------*/
+/* ------------------------------------------------------------*/
+
+	#header {
+		clear:both;
+		float:left;
+		width:50%;
+		margin-left: auto;
+		margin-right: auto;
+		border-radius: 10px 10px 0 0;
+
+	}
+	#header {
+		border-bottom:0.4em solid #9D1309;
+		background-color: #F0F8FF;
+	}
+	#header p,
+	#header h1,
+	#header h2 {
+		padding:0.4em 15px 0 15px;
+		margin:0;
+		margin-top: 0.5em;
+		margin-bottom: 0.5em;
+		color: #000;
+	}
+	#header ul {
+		clear:left;
+		float:left;
+		width:100%;
+		list-style:none;
+		margin: 2px 0 0 0;
+		padding:0;
+	}
+	#header ul li {
+		display:inline;
+		list-style:none;
+		margin:0;
+		padding:0;
+	}
+	#header ul li a {
+		display:block;
+		float:left;
+		margin:0 0 0 1px;
+		padding:8px 12px;
+		text-align:center;
+		font-size: 1.2em;
+		background:#FFE4E1;
+		color:#000;
+		text-decoration:none;
+		position:relative;
+		left:15px;
+		line-height:1.5em;
+		border-radius: 10px 10px 0 0;
+		border: 0.2em solid #9D1309;
+		border-bottom: 0.2em solid #FFE4E1;
+	}
+	#header ul li a:hover {
+		background:#9D1309;
+		color:#fff;
+		border: 0.2em solid #9D1309;
+
+	}
+	#header ul li a.active,
+	#header ul li a.active:hover {
+		color:#fff;
+		background:#9D1309;
+		font-weight:bold;
+		border: 0.2em solid #9D1309;
+	}
+	#header ul li a span {
+		display:block;
+	}
+	
+	/* 'widths' sub menu */
+	#layoutdims {
+		clear:both;
+		background:#eee;
+		border-top:4px solid #000;
+		margin:0;
+		padding:6px 15px !important;
+		text-align:right;
+	}
+	
+	#header #logo{
+		clear:both;
+		display: block;
+		width: 90%;
+		padding: 1em;
+		margin-left: 0.5em;
+		margin-bottom: 0em;
+		border-radius: 10px 10px 10px 10px;
+		border: 0.0em solid #000;
+	}
+	
+	#header #logo a:hover{
+		background-color: #F0F8FF;
+	}
+
+	
+	
+/* ------------- COLUMN CONTAINER -----------------------------*/
+/* ------------------------------------------------------------*/
+
+	.colmask {
+		position:relative;	/* This fixes the IE7 overflow hidden bug */
+		clear:both;
+		float:left;
+		width:50%;			/* width of whole page */
+		overflow:hidden;		/* This chops off any overhanging divs */
+	}
+	/* common column settings */
+	.colright,
+	.colmid,
+	.colleft {
+		float:left;
+		width:100%;
+		position:relative;
+	}
+	.col1,
+	.col2,
+	.col3 {
+		float:left;
+		position:relative;
+		padding:0 0 1em 0;
+		overflow:hidden;
+	}
+	/* Full page settings */
+	.fullpage {
+		background:#fff;		/* page background colour */
+	}
+	
+	.fullpage .col1 {
+		width:90%;			/* page width minus left and right padding */
+		left:5%;			/* page left padding */
+	}
+		
+
+	#login_links{
+		clear:both;
+		display: inline;
+		float: right;
+		padding: 1em;
+		text-align: right;		
+	}
+	
+	#login_links a {
+		clear:both;
+		display: inline;
+		font-size: 1.1em;
+		color:#000;
+		text-decoration:none;
+		position:relative;
+		margin-bottom: 0.4em;
+		background-color: #F0F8FF;
+
+	}
+	#login_links a:hover {
+		color:#36648B;
+		background-color: #F0F8FF;
+
+	}
+	
+	#privacylist li{
+		margin-left: 3em;
+	}
+	
+	
+
+/* ------------- FOOTER STYLES --------------------------------*/
+/* ------------------------------------------------------------*/
+
+	#footer {
+		clear:both;
+		float:left;
+		width:50%;
+		background-color: #F0F8FF;
+		vertical-align: top;
+		border-top:0.3em solid #9D1309;
+		border-radius: 0 0 10px 10px;
+		color: #36648B;	
+	}
+	
+	#footer p {
+		padding:5px;
+		margin:0;
+		vertical-align: top;
+
+	}
+	
+	.footer_section{
+		display: inline;
+		padding: 2em;
+		float: left;
+		margin-top: -2.5em;
+		width: 26%;
+	}
+	
+	
+	#footer a {
+		clear:both;
+		display:block;
+		float:left;
+		font-size: 1em;
+		color:#000;
+		text-decoration:none;
+		position:relative;
+		margin-bottom: 0.4em;
+		background-color: #F0F8FF;
+
+	}
+	#footer a:hover {
+		color:#36648B;
+		background-color: #F0F8FF;
+
+	}
+
+	#social_icons a{
+		clear:both;
+		display: inline;
+		float: left;
+		border: 0px solid #000;
+		margin-right: 0.1em;
+	}
+	
+	#social_icons a{
+		clear:both;
+		display: inline;
+		padding: 0.1em;
+	}
