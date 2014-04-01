@@ -4,7 +4,6 @@ include 'includes/header.php';
 
 secureSession(); //secure the session
 
-print_r($_SESSION);
 
 
 $errMsgs = array();

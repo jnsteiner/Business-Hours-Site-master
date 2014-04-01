@@ -4,19 +4,20 @@ include 'includes/header.php';
 
 secureSession();
 
+$errMsgs = array();
 
 if(isset($_POST['go'])){
 
-		if(isset($_POST['address'])){
+		$address = filter($_POST['address']);
+		$radius = $_POST['radius'];
 
+		//check that something was filled in. otherwise, display a message
+		if(empty($address)){
 
-			//$coordinates = array();
-			$address = filter($_POST['address']);
+			$errMsgs[] = "Please provide a zip code and/or a place you're searching for.";
+		}
 
-			//$sensor = "false";
-			//$btype = $_POST['btype'];
-			$radius = $_POST['radius'];
-
+		if(isset($address)){
 
 			if(empty($radius)){
 				$radius = 1609.34; //default it to 1 mile
@@ -29,7 +30,7 @@ if(isset($_POST['go'])){
 
 
 			$refArray = getPlaceReferencesviaText($address,$radius);
-			 
+
 			$references = array();
 
 			//parse the json and store out the ref ids into an array
@@ -55,6 +56,16 @@ if(isset($_POST['go'])){
 
 
 <body>
+<div style="background-color:black;color:white;">
+<?php
+	
+	foreach ($errMsgs as $key => $value) {
+		echo $value . "<br>";
+	}
+
+
+?>
+</div>
 
 	<div class="colmask fullpage">
 		<div class="col1">
@@ -68,17 +79,15 @@ if(isset($_POST['go'])){
 
 
 				<form action="<?php echo "favorites.php"; ?>" method="post">
-					<input type="submit" name="add" value="add to favorites"><br>
-					<div id="result" align="left">
-			
-						<?php
+				<div id="result" align="left">
+				<?php
 	
-							if(!empty($listDisplay)){
-								echo $listDisplay;
-							}
-						?>
-				
-					</div><!-- End result div-->
+					if(!empty($listDisplay)){
+						echo "<input type='submit' name='add' value='add to favorites'><br>";
+						echo $listDisplay;
+					}
+				?>
+				</div>
 				</form>
 				</p>
 

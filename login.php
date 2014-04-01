@@ -64,8 +64,7 @@ if(isset($_POST['submit'])){
 				$updateSession = mysql_query("UPDATE " . USERS . " SET session_key = '$session', session_start = '" . $_SESSION['stime'] . "' WHERE id = '$id'");
 
 				//redirect to a new location
-				header("Location: ".SITE_BASE . "/profile.php");
-				session_regenerate_id(true);
+				header("Location: ".SITE_BASE . "/index.php");
 
 			}//end if
 
