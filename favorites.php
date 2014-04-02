@@ -3,6 +3,9 @@ include 'includes/config.inc.php';
 
 secureSession();
 
+include 'includes/header.php'; 
+
+
 $Msgs = array();
 $refArray = array();
 
@@ -38,10 +41,6 @@ $displayFaves = showMyFavorites();
 <link rel="stylesheet" type="text/css" href="styles/styles.css"></link>
 </head>
 <body>
-<?php
-include 'includes/nav.inc.php';
-?>
-<h1><?php echo $_SESSION['full_name'] . "'s" . " Favorites";?></h1>
 <div style="background-color:black;color:white;">
 <?php
 foreach ($Msgs as $key => $value) {
@@ -49,14 +48,14 @@ foreach ($Msgs as $key => $value) {
 }
 ?>
 </div>
+<div class="colmask fullpage">
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="get"> 
 <br>
 <?php
-
 //only show delete buttons when there are results to delete. otherwise hide them.
 if(!empty($displayFaves)){
-	echo "<input type='submit' name='delete' value='delete'/>";
-	echo $displayFaves;
+	echo "<table><tr><td><input type='submit' name='delete' value='delete'/></td><td></td></tr>";
+	echo "<tr><td colspan=2>" . $displayFaves . "</td></tr>";
 }
 else{
 	echo "You currently have no favorites.";
@@ -65,9 +64,10 @@ else{
 }
 //same here. only show when favorites exist
 if(!empty($displayFaves)){
-	echo "<input type='submit' name='delete' value='delete'/>";
+	echo "<tr><td><input type='submit' name='delete' value='delete'/></td><td></td></tr></table>";
 }
 
 ?>
 </form>
+</div>
 </body>

@@ -1,6 +1,8 @@
 <?php
 include 'includes/config.inc.php';
-include 'includes/nav.inc.php';
+include 'includes/header.php'; 
+
+$msg = array();
 
 //check for variables set
 if(isset($_GET['ac']) && isset($_GET['em'])){
@@ -20,18 +22,39 @@ if($idRownum > 0){
 	$updActiveflg = mysql_query("UPDATE " . USERS . " SET isactivated='Y' WHERE md5_id='" . $md5 . "'") or die(mysql_error());
 
 
-	echo "Congratulations! Your account has been activated!<br>You may <a href='login.php'>login.</a>";
+	$msg[] = "Congratulations! Your account has been activated!<br>You may <a href='login.php'>login.</a>";
 }
 else{
-	echo "Your account cannot be verified. Please try and <a href='register.php'>re-register</a>.";
+	$msg[] = "Your account cannot be verified. Please try and <a href='register.php'>re-register</a>.";
 }
 
 
 } 
 else{
-	echo "Invalid URL";
+	$msg[] =  "Invalid URL";
 }//end isset
 
 
 
 ?>
+<div class="colmask fullpage">
+	<div class="col1">
+
+		<h2>Account activation</h2>
+		<br />
+		<p> 
+		<?php 
+				foreach ($msg as $key => $value) {
+					echo $value . "<br>";
+				}
+		 ?>
+	</div>
+</div>
+
+
+<?php include 'includes/footer.php'; 
+?>
+
+
+</body>
+</html>

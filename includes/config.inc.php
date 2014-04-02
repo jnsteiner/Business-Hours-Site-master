@@ -1,7 +1,7 @@
 <?php
 require 'php-sdk/src/temboo.php';
 
-ini_set('display_errors', 'On');
+ini_set('display_errors', 'Off');
 error_reporting(E_ALL | E_STRICT);
 
 //define db constants
@@ -530,12 +530,14 @@ function showMyFavorites(){
 	//iterate through each reference to out place details including store hours
 	for($i = 0 ; $i < count($placeDetails) ; $i++){
 	
+		$listDisplay .= "<table><tr><td></td><td></td></tr>";
+		$listDisplay .= "<tr><td><input type=checkbox name='referenceIDs[]' value='" . $myFavorites[$i]  . "'/></td>";
+		$listDisplay .= "<td>" . $placeDetails[$i]['result']["name"] . "</td></tr>";
+		$listDisplay .= "<tr><td></td><td>" . $placeDetails[$i]['result']["adr_address"] . "</td></tr>";
+		$listDisplay .= "<tr><td></td><td>" . $placeDetails[$i]['result']["formatted_phone_number"] . "</td></tr>";
+		$listDisplay .= "<tr><td></td><td>" . formatOpenClosed($placeDetails[$i]['result']["opening_hours"]["open_now"]) . "</td></tr>";
 
-		$listDisplay .= "<input type=checkbox name='referenceIDs[]' value='" . $myFavorites[$i]  . "'/>";
-		$listDisplay .= $placeDetails[$i]['result']["name"] . "<br>";
-		$listDisplay .= $placeDetails[$i]['result']["adr_address"] . "<br>";
-		$listDisplay .= $placeDetails[$i]['result']["formatted_phone_number"] . "<br>";
-		$listDisplay .= formatOpenClosed($placeDetails[$i]['result']["opening_hours"]["open_now"]) . "<br><br>";
+					
 
 					for($j = 0 ; $j < count($placeDetails[$i]['result']["opening_hours"]["periods"]) ; $j++){
 
@@ -543,16 +545,17 @@ function showMyFavorites(){
 						//check if it's todaty's date and highlight the respective row
 						if($days[$placeDetails[$i]['result']["opening_hours"]["periods"][$j]["open"]["day"]] == $days[$today]){
 
-							$listDisplay .= "<b>" . $days[$placeDetails[$i]['result']["opening_hours"]["periods"][$j]["open"]["day"]] . " | " . date("h:i a",strtotime($placeDetails[$i]['result']["opening_hours"]["periods"][$j]["open"]["time"])) . " - " . date("h:i a",strtotime($placeDetails[$i]['result']["opening_hours"]["periods"][$j]["close"]["time"])) . "</b><br>";
+							$listDisplay .= "<tr><td id='today'>" . $days[$placeDetails[$i]['result']["opening_hours"]["periods"][$j]["open"]["day"]] . "</td><td id='today'>" . date("h:i a",strtotime($placeDetails[$i]['result']["opening_hours"]["periods"][$j]["open"]["time"])) . " - " . date("h:i a",strtotime($placeDetails[$i]['result']["opening_hours"]["periods"][$j]["close"]["time"])) . "</td></tr>";
 
 						}
 
 						else{
 
-							$listDisplay .= $days[$placeDetails[$i]['result']["opening_hours"]["periods"][$j]["open"]["day"]] . " | " . date("h:i a",strtotime($placeDetails[$i]['result']["opening_hours"]["periods"][$j]["open"]["time"])) . " - " . date("h:i a",strtotime($placeDetails[$i]['result']["opening_hours"]["periods"][$j]["close"]["time"])) . "<br>";
+							$listDisplay .= "<tr><td>" . $days[$placeDetails[$i]['result']["opening_hours"]["periods"][$j]["open"]["day"]] . "</td><td>" . date("h:i a",strtotime($placeDetails[$i]['result']["opening_hours"]["periods"][$j]["open"]["time"])) . " - " . date("h:i a",strtotime($placeDetails[$i]['result']["opening_hours"]["periods"][$j]["close"]["time"])) . "</td></tr>";
 						} //end if
 					}//end for
-					echo "<br><br>";
+
+					$listDisplay .= "<tr><td></td><td></td></tr></table>";
 	} //end for 
 
 						return $listDisplay;

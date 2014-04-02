@@ -1,5 +1,8 @@
 <?php
 include 'includes/config.inc.php';
+
+session_start();
+
 include 'includes/header.php'; 
 
 

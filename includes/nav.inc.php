@@ -1,6 +1,5 @@
 <?php
 
-//store out base to check URL in order to highlight selected link
 $base = basename($_SERVER['SCRIPT_NAME']);
 
 ?>

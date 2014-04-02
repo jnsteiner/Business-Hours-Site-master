@@ -23,3 +23,6 @@ div#nav {
 .currentday{
 	font-weight: bold;
 }
+#today{
+	background-color: yellow;
+}

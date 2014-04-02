@@ -66,7 +66,7 @@ $errMsgs = registerMe($full_name,$email,$pwd,$confirm_pwd,$city,$state,$postal_c
 				<br />
 			
 				<p>	
-				First Name:<br />
+				Full Name:<br />
 				<input type="text" name="full_name" size="100" maxlength="200" value="<?php echo $full_name; ?>">
 				<br /><br />
 			

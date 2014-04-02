@@ -1,6 +1,12 @@
 <?php
 include 'includes/config.inc.php';
-include 'includes/header.php'; 
+
+//don't output this unless its upon loading of the page without logging in
+if(!isset($_POST['submit'])){
+	include 'includes/header.php'; 
+}
+
+
 
 $errMsgs = array();
 
@@ -60,6 +66,7 @@ if(isset($_POST['submit'])){
 				$_SESSION['full_name'] = $fname;
 				$_SESSION['skey'] = $session;
 				$_SESSION['stime'] = date("Y-m-d H:i:s");
+				$_SESSION['loggedin'] = true;
 
 				$updateSession = mysql_query("UPDATE " . USERS . " SET session_key = '$session', session_start = '" . $_SESSION['stime'] . "' WHERE id = '$id'");
 
