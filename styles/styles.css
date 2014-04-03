@@ -26,3 +26,10 @@ div#nav {
 #today{
 	background-color: yellow;
 }
+
+#placename{
+	color:gray;
+}
+#zipcode{
+	color:gray;
+}

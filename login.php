@@ -99,7 +99,7 @@ if(isset($_POST['submit'])){
 
 <head>
 	<link rel="stylesheet" type="text/css" href="styles/styles.css"></link>
-</head>
+
 <title>Login</title>
 
 <body>

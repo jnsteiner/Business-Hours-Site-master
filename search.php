@@ -55,10 +55,41 @@ if(isset($_POST['go'])){
 } //end go
 ?>
 <head>
-	<script src="<?php echo SITE_BASE; ?>/includes/js/jquery-1.10.2.js"></script>
+	<script src="<?php echo SITE_BASE; ?>/js/jquery-1.10.2.js"></script>
 	<link rel="stylesheet" type="text/css" href="styles/styles.css"></link>
 </head>
+<script>
+//when users select the fields the background will turn yellow and the ghost text will disappear
+$(document).ready(function(){
 
+	$("#placename").focus(function(){
+		$(this).val("");
+		$(this).css("background-color","#EDEAC5");
+		$(this).css("color","black");	//reset the color to black when the user starts typing
+	});
+
+$("#placename").blur(function(){
+		$(this).css("background-color","white");
+		$(this).val("Enter a place e.g. TD Bank");
+		$(this).css("color","gray");
+	});
+
+	$("#zipcode").focus(function(){
+		$(this).val("");
+		$(this).css("background-color","#EDEAC5");
+		$(this).css("color","black");	//reset the color to black when the user starts typing
+	});
+
+$("#zipcode").blur(function(){
+		$(this).css("background-color","white");
+		$(this).val("Enter a zip code e.g. 12345");
+		$(this).css("color","gray");
+	});
+
+
+
+});
+</script>
 
 
 
@@ -81,8 +112,8 @@ if(isset($_POST['go'])){
 				<p>
 				<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 				<table><tr><td>place name</td><td>zip code</td><td></td></tr>
-				<tr><td><input type="text" name="placename" maxlength="200" size="50"></td>
-				<td><input type="text" name="zipcode" maxlength="200" size="20"></td><td>
+				<tr><td><input type="text" id="placename" name="placename" maxlength="200" size="50" value="Enter a place e.g. TD Bank"></td>
+				<td><input type="text" id="zipcode" name="zipcode" maxlength="200" size="20" value="Enter a zip code e.g. 12345"></td><td>
 				<input type="submit" name="go" value="find nearby"></td></tr>
 				<tr><td colspan="3"><input type="text" name="radius" size="5" value="">&nbsp;&nbsp;(in miles)</td></tr>
 				</table>
