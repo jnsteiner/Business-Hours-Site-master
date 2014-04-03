@@ -8,16 +8,23 @@ $errMsgs = array();
 
 if(isset($_POST['go'])){
 
-		$address = filter($_POST['address']);
+		//set the place name
+		$placename = filter($_POST['placename']);
+		//set the zip
+		$zipcode = filter($_POST['zipcode']);
 		$radius = $_POST['radius'];
 
 		//check that something was filled in. otherwise, display a message
-		if(empty($address)){
+		if(empty($placename) || empty($zipcode)){
 
-			$errMsgs[] = "Please provide a zip code and/or a place you're searching for.";
+			$errMsgs[] = "Please provide a zip code AND a place you're searching for.";
 		}
 
-		if(isset($address)){
+		//check that both are filled in
+		if(isset($placename) && isset($zipcode)){
+
+			//concatenate the place and zip for the api call
+			$address = $placename . "," . $zipcode;
 
 			if(empty($radius)){
 				$radius = 1609.34; //default it to 1 mile
@@ -73,8 +80,12 @@ if(isset($_POST['go'])){
 			<h2>Search</h2>
 				<p>
 				<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-					<input type="text" name="address" maxlength="200" size="100"><input type="submit" name="go" value="find nearby">
-					<input type="text" name="radius" value="">&nbsp;&nbsp;in miles
+				<table><tr><td>place name</td><td>zip code</td><td></td></tr>
+				<tr><td><input type="text" name="placename" maxlength="200" size="50"></td>
+				<td><input type="text" name="zipcode" maxlength="200" size="20"></td><td>
+				<input type="submit" name="go" value="find nearby"></td></tr>
+				<tr><td colspan="3"><input type="text" name="radius" size="5" value="">&nbsp;&nbsp;(in miles)</td></tr>
+				</table>
 				</form>
 
 
