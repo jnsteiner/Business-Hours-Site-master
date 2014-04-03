@@ -30,7 +30,11 @@ Personal data should be relevant to the purposes for which it is to be used, and
 		<li>We will make readily available to customers information about our policies and practices relating to the management of personal information.<br /><br /></li>
 
 		<li>We are committed to conducting our business in accordance with these principles in order to ensure that the confidentiality of personal information is protected and maintained.<br /><br /></li>
-		</ul>
+
+
+		<li>Like many other websites and applications today, Business Hours is powered by the Google Places API.  The creators of Business Hours have no special affiliation with Google aside from utilizing some of their free services and implementing an API that has been created and maintained by Google.  We did not create the API, we are merely referencing content Google collected, and anyone who uses this application therefore must abide by all terms outlined in <a href="http://www.google.com/policies/privacy/" target="_blank">Google's Privacy Policy</a></li>
+.			
+		
 		
 		
 		

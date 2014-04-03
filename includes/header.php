@@ -20,12 +20,19 @@ session_start();
 
 <div id="header">
 
+
+
 <div id='login_links'>
 <?php
 
+//Display utility navigation bar regardless of login status
+echo "<a href='about.php'>About Us</a> | ";
+echo "<a href='faq.php'>FAQ</a> | ";
+
+
 //check if logged in. if they are then displayn a welcome message
 if(!$_SESSION['loggedin']){
-echo "<a href='login.php'>Login</a> or <a href='register.php'>Register</a>";
+echo "<a href='login.php'>Login</a> | <a href='register.php'>Register</a>";
 }
 else{
 echo "Welcome " . $_SESSION['full_name'] . "      " . "<a href='logout.php'>Logout</a>";
@@ -35,23 +42,16 @@ echo "Welcome " . $_SESSION['full_name'] . "      " . "<a href='logout.php'>Logo
 </div>			
 	<!--DISPLAY PAGE LOGO-->
 	<p id="logo"> 
-				 <a href="index.php"> <img src="images/bh_logo_os.gif" width="100%" style="margin-top: -5.0em; margin-left: -0.5em; margin-bottom: -3.0em;"></a>
+				 <a href="index.php"> <img src="images/bh_logo_os2.gif" width="100%" style="margin-top: -5.0em; margin-left: 0em; margin-bottom: -3.0em;"></a>
 	</p>
 	<!--MAIN PAGE NAVIGATION -->
 	<ul id="nav">
 		<li><a href="index.php" 
 				    >Home</a> </li>
-		    				 	 	
-		<li><a href="about.php" 
-					>About Us</a> </li>	
 		
 		<li><a href="search.php" 
 					>Search</a> </li>		
-				
-		<li><a href="#"><span>Categories</span></a></li>
-		
-		<li><a href="faq.php" 
-					>FAQ</a> </li>
+
 <!-- hide register link for logged in users  -->
 <?php 
 if(!$_SESSION['loggedin']){					

@@ -1,3 +1,4 @@
+<html>
 <?php
 include 'includes/config.inc.php';
 include 'includes/header.php'; 
@@ -56,21 +57,24 @@ if(isset($_POST['go'])){
 
 
 <body>
-<div style="background-color:black;color:white;">
-<?php
-	
-	foreach ($errMsgs as $key => $value) {
-		echo $value . "<br>";
-	}
 
-
-?>
-</div>
-
-	<div class="colmask fullpage">
+ 	<div class="colmask fullpage">
 		<div class="col1">
+			
+				
+			<div style="background-color:#9D1309;color:white;margin:1em; border-radius: 5px 5px 5px 5px;
+">
+			<?php
+	
+				foreach ($errMsgs as $key => $value) {
+					echo $value . "<br>";
+				}
+
+			?>
+			</div>
+			
 		
-			<h2>Search</h2>
+			<h2>Search </h2>
 				<p>
 				<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 					<input type="text" name="address" maxlength="200" size="100"><input type="submit" name="go" value="find nearby">
@@ -83,13 +87,17 @@ if(isset($_POST['go'])){
 				<?php
 	
 					if(!empty($listDisplay)){
-						echo "<input type='submit' name='add' value='add to favorites'><br>";
+						echo "<input type='submit' name='add' value='add to favorites'><br />";
 						echo $listDisplay;
 					}
 				?>
 				</div>
 				</form>
 				</p>
+				
+				
+				<img src="images/poweredbygoogle.png" style="float: right;">
+
 
 		</div> <!-- End div col1-->
 	</div><!-- End colmask fullpage-->
@@ -100,4 +108,4 @@ if(isset($_POST['go'])){
 ?>
 
 </body>
-
+</html>

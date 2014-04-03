@@ -52,6 +52,11 @@ Any claim relating to Business Hours's web site shall be governed by the laws of
 
 General Terms and Conditions applicable to Use of a Web Site.<br /><br /></li>
 
+
+	<li><strong>Powered By Google</strong><br />
+
+Business Hours references the Google Places API for all search queries, so all participants who use this application are also bound to <a href="http://www.google.com/intl/en/policies/terms/" target="_blank">Google's Terms of Service.</a><br /><br /></li>
+
 </ol>
 
 	</div>
