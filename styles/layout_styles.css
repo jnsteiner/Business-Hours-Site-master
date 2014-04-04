@@ -177,10 +177,19 @@
 
 	#login_links{
 		clear:both;
+		width: 96%;
 		display: inline;
 		float: right;
-		padding: 1em;
-		text-align: right;		
+		padding: 0.5em;
+		margin-right: 0.6em;
+		margin-top: 0.5em;
+		margin-bottom: 1em;
+		text-align: right;	
+		background-color: #B7C3D0;	
+		border-radius: 6px 6px 6px 6px;
+		border: 3px solid #36648B;
+		opacity: 0.7;
+
 	}
 	
 	#login_links a {
@@ -191,12 +200,12 @@
 		text-decoration:none;
 		position:relative;
 		margin-bottom: 0.4em;
-		background-color: #F0F8FF;
+		background-color: #B7C3D0;
 
 	}
 	#login_links a:hover {
 		color:#36648B;
-		background-color: #F0F8FF;
+		background-color: #B7C3D0;
 
 	}
 	
