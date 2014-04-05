@@ -32,14 +32,20 @@ echo "<a href='faq.php'>FAQ</a> | ";
 
 //check if logged in. if they are then displayn a welcome message
 if(!$_SESSION['loggedin']){
-echo "<a href='login.php'>Login</a> | <a href='register.php'>Register</a>";
+echo "<a href='login.php'>Login</a> | <a href='register.php'>Register</a></div>			
+";
 }
 else{
-echo "Welcome " . $_SESSION['full_name'] . "      " . "<a href='logout.php'>Logout</a>";
+echo "<a href='profile.php'>Profile</a> | 
+<a href='logout.php'>Logout</a>			
+<div style='text-align: left; margin-left: 0.8em;font-size: 1.2em; margin-top: -1.1em;'><strong>Welcome, " . $_SESSION['full_name'] . "      " . "</strong></div></div>";
 }//end if
 
 ?>
-</div>			
+
+
+
+
 	<!--DISPLAY PAGE LOGO-->
 	<p id="logo"> 
 				 <a href="index.php"> <img src="images/bh_logo_os2.gif" width="100%" style="margin-top: -5.0em; margin-left: 0em; margin-bottom: -3.0em;"></a>
@@ -57,14 +63,12 @@ echo "Welcome " . $_SESSION['full_name'] . "      " . "<a href='logout.php'>Logo
 if(!$_SESSION['loggedin']){					
 		echo "<li><a href='register.php'>Register</a> </li>";
 		}
-?>		
-		<li><a href="profile.php" 
-					>Profile</a> </li>
+else{	?>
 			
 		<li><a href="favorites.php" 
 					>My Favorites</a> </li>
 		
-		
+<?php } ?>		
 	</ul>
 </div>
 

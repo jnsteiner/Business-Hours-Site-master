@@ -1,9 +1,9 @@
 <?php
 include 'includes/config.inc.php';
+include 'includes/header.php'; 
 
 secureSession();
 
-include 'includes/header.php'; 
 
 
 $Msgs = array();
@@ -48,7 +48,15 @@ foreach ($Msgs as $key => $value) {
 }
 ?>
 </div>
+
 <div class="colmask fullpage">
+	<div class="col1">
+
+<h2>Favorites</h2>
+
+<p>
+
+
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="get"> 
 <br>
 <?php
@@ -58,7 +66,7 @@ if(!empty($displayFaves)){
 	echo "<tr><td colspan=2>" . $displayFaves . "</td></tr>";
 }
 else{
-	echo "You currently have no favorites.";
+	echo "You currently have no favorites. ";
 	echo "<a href='search.php'>Search</a> to add favorites";
 
 }
@@ -70,4 +78,16 @@ if(!empty($displayFaves)){
 ?>
 </form>
 </div>
+
+	</p>
+
+	</div>
+</div>
+
+
+<?php include 'includes/footer.php'; 
+?>
+
+
 </body>
+</html>

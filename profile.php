@@ -40,12 +40,12 @@ if(isset($_POST['update'])){
 		<div class="col1">
 		
 			<form name="profileform" action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
-			<div align="right"><a href="logout.php">Logout</a></div>
+			<!--<div align="right"><a href="logout.php">Logout</a></div> -->
 				<div style="background-color:green;">
 					
 					<h2>Update Your Profile</h2>
 					
-						<div style="background-color:black;color:white;">
+						<div style="background-color:black; color:white;">
 						
 							<?php
 								if($errMsgs){
@@ -65,7 +65,7 @@ if(isset($_POST['update'])){
 						//display their info except for the password
 						while($flds = mysql_fetch_array($profileInfo)){
 
-						//print_r($flds);
+						print_r($flds);
 
 					?>
 

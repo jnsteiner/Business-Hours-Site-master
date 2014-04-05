@@ -7,6 +7,7 @@ secureSession();
 
 $errMsgs = array();
 
+
 if(isset($_POST['go'])){
 
 		$address = filter($_POST['address']);
@@ -51,6 +52,7 @@ if(isset($_POST['go'])){
 <head>
 	<script src="<?php echo SITE_BASE; ?>/includes/js/jquery-1.10.2.js"></script>
 	<link rel="stylesheet" type="text/css" href="styles/styles.css"></link>
+		
 </head>
 
 
@@ -62,8 +64,7 @@ if(isset($_POST['go'])){
 		<div class="col1">
 			
 				
-			<div style="background-color:#9D1309;color:white;margin:1em; border-radius: 5px 5px 5px 5px;
-">
+			<div style="background-color:#9D1309;color:white;margin:0em; border-radius: 0px 0px 0px 0px;">
 			<?php
 	
 				foreach ($errMsgs as $key => $value) {
@@ -76,7 +77,7 @@ if(isset($_POST['go'])){
 		
 			<h2>Search </h2>
 				<p>
-				<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+				<form action="search.php" method="post">
 					<input type="text" name="address" maxlength="200" size="100"><input type="submit" name="go" value="find nearby">
 					<input type="text" name="radius" value="">&nbsp;&nbsp;in miles
 				</form>
@@ -84,9 +85,10 @@ if(isset($_POST['go'])){
 
 				<form action="<?php echo "favorites.php"; ?>" method="post">
 				<div id="result" align="left">
+							
 				<?php
-	
 					if(!empty($listDisplay)){
+					
 						echo "<input type='submit' name='add' value='add to favorites'><br />";
 						echo $listDisplay;
 					}
