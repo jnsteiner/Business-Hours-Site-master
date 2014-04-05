@@ -2,6 +2,12 @@
 
 session_start();
 
+/*
+//check RM is set
+if(isset($_COOKIE['md5'])){
+	echo $_COOKIE['md5'];
+}
+*/
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-GB">
@@ -32,8 +38,12 @@ echo "<a href='faq.php'>FAQ</a> | ";
 
 //check if logged in. if they are then displayn a welcome message
 if(!$_SESSION['loggedin']){
+<<<<<<< HEAD
 echo "<a href='login.php'>Login</a> | <a href='register.php'>Register</a></div>			
 ";
+=======
+echo "<a href='faq.php'>FAQ</a> | <a href='about.php'>About Us</a> | <a href='profile.php'>Profile</a> | <a href='login.php'>Login</a> | <a href='register.php'>Register</a>";
+>>>>>>> FETCH_HEAD
 }
 else{
 echo "<a href='profile.php'>Profile</a> | 
@@ -54,6 +64,7 @@ echo "<a href='profile.php'>Profile</a> |
 	<ul id="nav">
 		<li><a href="index.php" 
 				    >Home</a> </li>
+<<<<<<< HEAD
 		
 		<li><a href="search.php" 
 					>Search</a> </li>		
@@ -69,6 +80,19 @@ else{	?>
 					>My Favorites</a> </li>
 		
 <?php } ?>		
+=======
+		    				 	 	
+		<li><a href="search.php" 
+					>Search</a> </li>		
+				
+		<li><a href="#"><span>Categories</span></a></li>
+<!-- hide register link for logged in users  -->
+<?php 
+if($_SESSION['loggedin']){					
+	echo "<li><a href='favorites.php'>My Favorites</a> </li>";
+}		
+?>		
+>>>>>>> FETCH_HEAD
 	</ul>
 </div>
 
