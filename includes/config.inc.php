@@ -342,28 +342,27 @@ function getPlaceDetails($refArray){
 
 		$listOfdetails = json_decode($placeDetailsResults->getResponse(),true);
 
-		$listDisplay .= "<table><tr><td></td><td></td><td></td></tr>";
-		$listDisplay .= "<tr><td><input type=checkbox name='referenceIDs[]' value='" . $refArray[$i]  . "'/></td><td colspan=2>";
-		$listDisplay .= $listOfdetails['result']["name"] . "</td></tr>";
-		$listDisplay .= "<tr><td></td><td colspan=2>" . $listOfdetails['result']["adr_address"] . "</td></tr>";
-		$listDisplay .= "<tr><td></td><td colspan=2>" . $listOfdetails['result']["formatted_phone_number"] . "</td></tr>";
-		$listDisplay .= "<tr><td></td><td colspan=2>" . formatOpenClosed($listOfdetails['result']["opening_hours"]["open_now"]) . "</td></tr>";
+		$listDisplay .= "<input type=checkbox name='referenceIDs[]' value='" . $refArray[$i]  . "'/>";
+		$listDisplay .= $listOfdetails['result']["name"] . "<br>";
+		$listDisplay .= $listOfdetails['result']["adr_address"] . "<br>";
+		$listDisplay .= $listOfdetails['result']["formatted_phone_number"] . "<br>";
+		$listDisplay .= formatOpenClosed($listOfdetails['result']["opening_hours"]["open_now"]) . "<br><br>";
 
 					for($j = 0 ; $j < count($listOfdetails['result']["opening_hours"]["periods"]) ; $j++){
 
 						//check if it's todaty's date and highlight the respective row
 						if($days[$listOfdetails['result']["opening_hours"]["periods"][$j]["open"]["day"]] == $days[$today]){
 
-							$listDisplay .= "<tr><td></td><td id='today'>" . $days[$listOfdetails['result']["opening_hours"]["periods"][$j]["open"]["day"]] . "</td><td id='today'>" . date("h:i a",strtotime($listOfdetails['result']["opening_hours"]["periods"][$j]["open"]["time"])) . " - " . date("h:i a",strtotime($listOfdetails['result']["opening_hours"]["periods"][$j]["close"]["time"])) . "</td></tr>";
+							$listDisplay .= "<b>" . $days[$listOfdetails['result']["opening_hours"]["periods"][$j]["open"]["day"]] . " | " . date("h:i a",strtotime($listOfdetails['result']["opening_hours"]["periods"][$j]["open"]["time"])) . " - " . date("h:i a",strtotime($listOfdetails['result']["opening_hours"]["periods"][$j]["close"]["time"])) . "</b><br>";
 
 						}
 
 						else{
 
-							$listDisplay .= "<tr><td></td><td>" . $days[$listOfdetails['result']["opening_hours"]["periods"][$j]["open"]["day"]] . "</td><td>" . date("h:i a",strtotime($listOfdetails['result']["opening_hours"]["periods"][$j]["open"]["time"])) . " - " . date("h:i a",strtotime($listOfdetails['result']["opening_hours"]["periods"][$j]["close"]["time"])) . "</td></tr>";
+							$listDisplay .= $days[$listOfdetails['result']["opening_hours"]["periods"][$j]["open"]["day"]] . " | " . date("h:i a",strtotime($listOfdetails['result']["opening_hours"]["periods"][$j]["open"]["time"])) . " - " . date("h:i a",strtotime($listOfdetails['result']["opening_hours"]["periods"][$j]["close"]["time"])) . "<br>";
 						} //end if
 					}//end for
-							$listDisplay .= "<tr><td></td><td></td><td></td></tr></table>";
+					echo "<br><br>";
 	} //end for 
 
 						return $listDisplay;
@@ -638,17 +637,5 @@ function secureSession(){
 		logout($msg);
 	}//end if
 }//end fn
-
-
-//these functions are for setting remember me cookies so that users don't have to login each time they come to the site
-function cookieSet($val){
-	setcookie("md5",$val,time()+(10*365*24*60*60));
-}
-
-function cookieExpire($val){
-	setcookie("md5",$val,time()-3600);
-}
-
-
 
 ?>

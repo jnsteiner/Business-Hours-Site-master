@@ -24,6 +24,7 @@ if(isset($_POST['submit'])){
 	$pwd = $_POST['pwd'];
 	$pwdHashed = hashpass($pwd);
 
+
 	//check for valid email address using hw function
 	if(empty($email) || !check_email($email)){
 		$errMsgs[] = "Please enter a valid email address.";
@@ -35,11 +36,11 @@ if(isset($_POST['submit'])){
 	}	
 
 	//retrieve the password based on the email address
-	$result = mysql_query("SELECT md5_id, pwd, id, full_name FROM " . USERS . " WHERE email = AES_ENCRYPT('$email', '$salt') AND isactivated='Y'") or die(mysql_error());
+	$result = mysql_query("SELECT pwd, id, full_name FROM " . USERS . " WHERE email = AES_ENCRYPT('$email', '$salt') AND isactivated='Y'") or die(mysql_error());
 
 	$resultRow = mysql_num_rows($result);
 
-	list($md5,$password,$id,$fname) = mysql_fetch_row($result);
+	list($password,$id,$fname) = mysql_fetch_row($result);
 
 
 	//logic here for logging in
@@ -69,10 +70,6 @@ if(isset($_POST['submit'])){
 
 				$updateSession = mysql_query("UPDATE " . USERS . " SET session_key = '$session', session_start = '" . $_SESSION['stime'] . "' WHERE id = '$id'");
 
-				if(isset($_POST['rm'])){
-					cookieSet($md5);
-				}
-
 				//redirect to a new location
 				header("Location: ".SITE_BASE . "/index.php");
 
@@ -99,7 +96,7 @@ if(isset($_POST['submit'])){
 
 <head>
 	<link rel="stylesheet" type="text/css" href="styles/styles.css"></link>
-
+</head>
 <title>Login</title>
 
 <body>
@@ -130,8 +127,8 @@ if(isset($_POST['submit'])){
 
 				Password:<br />
 				<input type="password" name="pwd" size="40" maxlength="200">
-				<br />
-				<input type="checkbox" name="rm" value="Y">remember me<br>
+				<br /><br />
+				
 				<input type="submit" name="submit" value="login">
 			</form>	
 			<br />
