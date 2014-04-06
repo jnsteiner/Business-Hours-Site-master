@@ -93,13 +93,13 @@
 		margin:0 0 0 1px;
 		padding:8px 12px;
 		text-align:center;
-		font-size: 1.2em;
+		font-size: 1.1em;
 		background:#FFE4E1;
 		color:#000;
 		text-decoration:none;
 		position:relative;
 		left:15px;
-		line-height:1.5em;
+		line-height:1.2em;
 		border-radius: 10px 10px 0 0;
 		border: 0.2em solid #9D1309;
 		border-bottom: 0.2em solid #FFE4E1;
@@ -171,7 +171,7 @@
 	.col3 {
 		float:left;
 		position:relative;
-		padding:0 0 1em 0;
+		padding:0 0 2em 0;
 		overflow:hidden;
 	}
 	/* Full page settings */
@@ -187,10 +187,19 @@
 
 	#login_links{
 		clear:both;
+		width: 96%;
 		display: inline;
 		float: right;
-		padding: 1em;
-		text-align: right;		
+		padding: 0.5em;
+		margin-right: 0.6em;
+		margin-top: 0.5em;
+		margin-bottom: 1em;
+		text-align: right;	
+		background-color: #B7C3D0;	
+		border-radius: 6px 6px 6px 6px;
+		border: 3px solid #36648B;
+		opacity: 0.7;
+
 	}
 	
 	#login_links a {
@@ -201,12 +210,12 @@
 		text-decoration:none;
 		position:relative;
 		margin-bottom: 0.4em;
-		background-color: #F0F8FF;
+		background-color: #B7C3D0;
 
 	}
 	#login_links a:hover {
 		color:#36648B;
-		background-color: #F0F8FF;
+		background-color: #B7C3D0;
 
 	}
 	
@@ -214,7 +223,8 @@
 		margin-left: 3em;
 	}
 	
-	
+	#results{
+	}
 
 /* ------------- FOOTER STYLES --------------------------------*/
 /* ------------------------------------------------------------*/
@@ -241,10 +251,19 @@
 		display: inline;
 		padding: 2em;
 		float: left;
+		margin-left: 2em;
 		margin-top: -2.5em;
-		width: 26%;
+		width: 20%;
 	}
 	
+	.quicklinks{
+		display: inline;
+		padding: 2em;
+		float: left;
+		margin-top: -6.9em;
+		margin-left: 4em;
+		width: 26%;
+	}
 	
 	#footer a {
 		clear:both;
