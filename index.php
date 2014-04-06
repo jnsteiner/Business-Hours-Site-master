@@ -27,7 +27,21 @@ include 'includes/header.php';
 
 <?php include 'includes/footer.php'; 
 ?>
+<div id="welcomemsg" style="display:none;align:center">Thanks for registering! Welcome! Now start searchin'!</div>
+<? if($_GET['a'] == "register"){ 
+//if coming from registration page then show welcome message
+?> 
+<script>
+//form processing functions
+$(function()
+{
 
+  $('#welcomemsg').fadeIn(2000).show().fadeOut(4000); //Show, then hide success msg	
 
+});
+</script>
+<?php 
+} 
+?>
 </body>
 </html>

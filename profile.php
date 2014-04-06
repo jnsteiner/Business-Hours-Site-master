@@ -1,9 +1,9 @@
 <?php
 include 'includes/config.inc.php';
-include 'includes/header.php'; 
 
 secureSession(); //secure the session
 
+include 'includes/header.php'; 
 
 
 $errMsgs = array();
@@ -40,8 +40,7 @@ if(isset($_POST['update'])){
 		<div class="col1">
 		
 			<form name="profileform" action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
-			<div align="right"><a href="logout.php">Logout</a></div>
-				<div style="background-color:green;">
+				<div>
 					
 					<h2>Update Your Profile</h2>
 					

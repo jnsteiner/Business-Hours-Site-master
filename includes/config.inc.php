@@ -15,7 +15,7 @@ define("PSTORE","bhours_pstore_mmorgan"); //password store
 define("REFERENCES","bhours_refs_mmorgan"); //reference details store
 
 //define email address for sending activation emails
-define("ACTIVATION_SWITCH",true);
+define("ACTIVATION_SWITCH",false);
 
 //site base
 define ("SITE_BASE", "http://".$_SERVER['HTTP_HOST']."/bhours");
@@ -201,7 +201,15 @@ if($page == "profile.php"){
 	
 		} //end activation switch
 		else{
-	$errors[] = "You're now successfully registered. Start saving out your favorite places!";	
+			//update the active flag if email activation is turned off
+			mysql_query("UPDATE ".USERS." SET isactivated='Y' WHERE id='$id'") or die(mysql_error());		
+			//$errors[] = "You're now successfully registered. Start saving out your favorite places!";
+
+			//redirect to the homepage
+			initializeSession($email);
+
+			header("Location: ".SITE_BASE . "/index.php?a=register");
+	
 		}
 
 						} //end if register me
@@ -286,6 +294,7 @@ function logout($logoutmsg){
 		unset($_SESSION['full_name']);
 		unset($_SESSION['skey']);
 		unset($_SESSION['stime']);
+		unset($_SESSION['HTTP_USER_AGENT']);
 
 		session_unset();
 		session_destroy();
@@ -637,6 +646,46 @@ function secureSession(){
 	else{
 		logout($msg);
 	}//end if
+}//end fn
+
+//called upon registration to automatically log the user in
+function initializeSession($email){
+
+	global $link;
+	global $salt;
+
+		//retrieve the password based on the email address
+		$result = mysql_query("SELECT md5_id, id, full_name FROM " . USERS . " WHERE email = AES_ENCRYPT('$email', '$salt') AND isactivated='Y'") or die(mysql_error());
+		$resultRow = mysql_num_rows($result);
+
+	if($resultRow > 0){
+		list($md5,$id,$fname) = mysql_fetch_row($result);
+
+				//start the session
+				session_start();
+
+				//clear out old session data and create a new one just in case
+				session_regenerate_id(true);
+
+				//generate a unique session key to be used for securing pages
+				$session = generateSessionkey();
+
+				//store session variables here
+				$_SESSION['uid'] = $id;
+				$_SESSION['full_name'] = $fname;
+				$_SESSION['skey'] = $session;
+				$_SESSION['stime'] = date("Y-m-d H:i:s");
+				$_SESSION['loggedin'] = true;
+				$_SESSION['HTTP_USER_AGENT'] = md5($_SERVER['HTTP_USER_AGENT']);
+				
+				$updateSession = mysql_query("UPDATE " . USERS . " SET session_key = '$session', session_start = '" . $_SESSION['stime'] . "' WHERE id = '$id'");
+
+	}
+	else{
+		$msg = "We're unable to locate you in our system. Please re-register or login again";
+		logout($msg);
+	}//end if
+
 }//end fn
 
 

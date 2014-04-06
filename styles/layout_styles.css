@@ -35,8 +35,18 @@
 	img {
 		margin:10px 0 5px;
 	}
-	
-	
+	#welcomemsg{
+		background-color: yellow;
+		position: fixed;
+		color: black;
+		font-size: 24px;
+		font-weight: bold;
+		text-align: center;
+		top: 140; right: 140; bottom: 140; left: 140;
+  		opacity: 1.0;
+  		z-index: 8;
+	}
+
 	
 /* ------------- HEADER STYLES --------------------------------*/
 /* ------------------------------------------------------------*/

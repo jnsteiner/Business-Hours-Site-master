@@ -82,7 +82,7 @@ $("#placename").blur(function(){
 
 $("#zipcode").blur(function(){
 		$(this).css("background-color","white");
-		$(this).val("Enter a zip code e.g. 12345");
+		$(this).val("Enter a zip code, city or state e.g. New York, NY 12345");
 		$(this).css("color","gray");
 	});
 
@@ -111,11 +111,11 @@ $("#zipcode").blur(function(){
 			<h2>Search</h2>
 				<p>
 				<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-				<table><tr><td>place name</td><td>zip code</td><td></td></tr>
+				<table><tr><td>place name</td><td>zip code/city/state</td><td></td></tr>
 				<tr><td><input type="text" id="placename" name="placename" maxlength="200" size="50" value="Enter a place e.g. TD Bank"></td>
-				<td><input type="text" id="zipcode" name="zipcode" maxlength="200" size="20" value="Enter a zip code e.g. 12345"></td><td>
+				<td><input type="text" id="zipcode" name="zipcode" maxlength="200" size="40" value="Enter a zip code, city or state e.g. New York, NY 12345"></td><td>
 				<input type="submit" name="go" value="find nearby"></td></tr>
-				<tr><td colspan="3"><input type="text" name="radius" size="5" value="">&nbsp;&nbsp;(in miles)</td></tr>
+				<tr><td colspan="3">search radius (in miles)<br><input type="text" name="radius" size="5" value=""></td></tr>
 				</table>
 				</form>
 

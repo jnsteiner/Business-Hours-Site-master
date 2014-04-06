@@ -48,6 +48,8 @@ if(isset($_POST['submit'])){
 
 		if(empty($errMsgs)){
 
+
+				
 			//if pwds match then get some of the basic info to store into a session variable
 			if($pwdHashed == $password){
 
@@ -66,7 +68,8 @@ if(isset($_POST['submit'])){
 				$_SESSION['skey'] = $session;
 				$_SESSION['stime'] = date("Y-m-d H:i:s");
 				$_SESSION['loggedin'] = true;
-
+				$_SESSION['HTTP_USER_AGENT'] = md5($_SERVER['HTTP_USER_AGENT']);
+				
 				$updateSession = mysql_query("UPDATE " . USERS . " SET session_key = '$session', session_start = '" . $_SESSION['stime'] . "' WHERE id = '$id'");
 
 				if(isset($_POST['rm'])){

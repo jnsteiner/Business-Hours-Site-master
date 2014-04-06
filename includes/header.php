@@ -19,7 +19,7 @@ if(isset($_COOKIE['md5'])){
 	<meta name="robots" content="index, follow" />
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 	<link rel="stylesheet" type="text/css" href="styles/layout_styles.css">
-
+	<script src="<?php echo SITE_BASE; ?>/js/jquery-1.10.2.js"></script>
 </head>
 <body>	
 <?php $base = basename($_SERVER['SCRIPT_NAME']); ?>
@@ -29,12 +29,12 @@ if(isset($_COOKIE['md5'])){
 <div id='login_links'>
 <?php
 
-//check if logged in. if they are then displayn a welcome message
+//check if logged in. if they are then displayn a welcome message. hide the register link if they're logged in. otherwise, show it.
 if(!$_SESSION['loggedin']){
 echo "<a href='faq.php'>FAQ</a> | <a href='about.php'>About Us</a> | <a href='profile.php'>Profile</a> | <a href='login.php'>Login</a> | <a href='register.php'>Register</a>";
 }
 else{
-echo "Welcome " . $_SESSION['full_name'] . "      " . "<a href='logout.php'>Logout</a>";
+echo "<a href='faq.php'>FAQ</a> | <a href='about.php'>About Us</a> | <a href='profile.php'>Profile</a> | Welcome " . $_SESSION['full_name'] . "      " . "<a href='logout.php'>Logout</a>";
 }//end if
 
 ?>
@@ -50,8 +50,6 @@ echo "Welcome " . $_SESSION['full_name'] . "      " . "<a href='logout.php'>Logo
 		    				 	 	
 		<li><a href="search.php" 
 					>Search</a> </li>		
-				
-		<li><a href="#"><span>Categories</span></a></li>
 <!-- hide register link for logged in users  -->
 <?php 
 if($_SESSION['loggedin']){					

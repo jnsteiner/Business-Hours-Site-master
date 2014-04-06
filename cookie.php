@@ -1,29 +1,23 @@
 <?php
-
-$value = "17273748";
-
+include 'includes/config.inc.php';
 
 if(isset($_POST['rememberme'])){
-	cookieSet($value);
+
+	$_SESSION['email'] = "mike.morgan@adp.com";
+
+	$value = $_SESSION['email'];
+
+//	initializeSession($value);
+
+	setcookie("md5",$value,time()+3600);
+
+	print_r($_COOKIE);
 }
 else{
-	cookieExpire($value);
+
+
 }
 	
-	echo "<br>RM is " . $_POST['rememberme'] . "  Cookie is " . $_COOKIE["uid"];
-
-
-
-function cookieSet($val){
-	setcookie("uid",$val,time()+(10*365*24*60*60));
-	echo "<br>cookie set";
-}
-
-function cookieExpire($val){
-	setcookie("uid",$val,time()-3600);
-	echo "<br>cookie expire";
-}
-
 
 ?>
 

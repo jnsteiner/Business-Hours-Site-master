@@ -1,7 +1,10 @@
 <?php
 include 'includes/config.inc.php';
-include 'includes/header.php'; 
 
+//don't output this unless its upon loading of the page without logging in
+if(!isset($_POST['submit'])){
+	include 'includes/header.php'; 
+}
 
 
 //initialize the form fields
@@ -32,6 +35,7 @@ if(isset($_POST['submit'])){
 
 //call registration function. return errors and success message based on function rules in config file
 $errMsgs = registerMe($full_name,$email,$pwd,$confirm_pwd,$city,$state,$postal_code,$activationcode,$date);
+
 
 }
 
